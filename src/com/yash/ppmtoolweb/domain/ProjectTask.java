@@ -1,4 +1,4 @@
-package com.yash.ppmtoolcore.domain;
+package com.yash.ppmtoolweb.domain;
 
 import java.util.Date;
 
