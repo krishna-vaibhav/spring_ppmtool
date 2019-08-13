@@ -1,6 +1,8 @@
 package com.yash.ppmtoolweb.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,7 @@ public class ProjectTask {
 	private String priority;
 	@ManyToOne
 	@JoinColumn(name="project_identifier",referencedColumnName="project_identifier")
-	private Project project_identifier;
+	private List<Project> project_identifier = new ArrayList<>();
 	private String project_sequence;
 	private String status;
 	private String summary;
@@ -34,7 +36,7 @@ public class ProjectTask {
 	private Date updated_at;
 	@ManyToOne
 	@JoinColumn(name="backlog_id")
-	private Backlog backlog_id;
+	private List<Backlog> backlog_id = new ArrayList<Backlog>();
 	
 	public int getId() {
 		return id;
@@ -92,17 +94,16 @@ public class ProjectTask {
 		this.updated_at = updated_at;
 	}
 	
-	
-	public Project getProject_identifier() {
+	public List<Project> getProject_identifier() {
 		return project_identifier;
 	}
-	public void setProject_identifier(Project project_identifier) {
+	public void setProject_identifier(List<Project> project_identifier) {
 		this.project_identifier = project_identifier;
 	}
-	public Backlog getBacklog_id() {
+	public List<Backlog> getBacklog_id() {
 		return backlog_id;
 	}
-	public void setBacklog_id(Backlog backlog_id) {
+	public void setBacklog_id(List<Backlog> backlog_id) {
 		this.backlog_id = backlog_id;
 	}
 	@Override

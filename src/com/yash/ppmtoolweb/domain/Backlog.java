@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +39,9 @@ public class Backlog {
 	@JoinColumn(name="project_id")
 	private Project project_id;
 	
+	@OneToMany(mappedBy="backlog_id")
+	private ProjectTask projectTask;
+	
 	public int getId() {
 		return id;
 	}
@@ -61,6 +65,14 @@ public class Backlog {
 	}
 	public void setProject_id(Project project_id) {
 		this.project_id = project_id;
+	}
+	
+	
+	public ProjectTask getProjectTask() {
+		return projectTask;
+	}
+	public void setProjectTask(ProjectTask projectTask) {
+		this.projectTask = projectTask;
 	}
 	@Override
 	public String toString() {
