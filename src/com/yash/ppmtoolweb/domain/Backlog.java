@@ -1,5 +1,8 @@
 package com.yash.ppmtoolweb.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,7 +43,7 @@ public class Backlog {
 	private Project project_id;
 	
 	@OneToMany(mappedBy="backlog_id")
-	private ProjectTask projectTask;
+	private List<ProjectTask> projectTask = new ArrayList<ProjectTask>();
 	
 	public int getId() {
 		return id;
@@ -68,10 +71,11 @@ public class Backlog {
 	}
 	
 	
-	public ProjectTask getProjectTask() {
+	
+	public List<ProjectTask> getProjectTask() {
 		return projectTask;
 	}
-	public void setProjectTask(ProjectTask projectTask) {
+	public void setProjectTask(List<ProjectTask> projectTask) {
 		this.projectTask = projectTask;
 	}
 	@Override

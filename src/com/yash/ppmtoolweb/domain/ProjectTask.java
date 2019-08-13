@@ -3,7 +3,6 @@ package com.yash.ppmtoolweb.domain;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 @Table(name="projectTasks")
 public class ProjectTask {
@@ -27,8 +27,8 @@ public class ProjectTask {
 	private Date due_date;
 	private String priority;
 	@ManyToOne
-	@JoinColumn(name="project_identifier",referencedColumnName="project_identifier")
-	private List<Project> project_identifier = new ArrayList<>();
+	@JoinColumn(name="p_id",referencedColumnName="project_identifier")
+	private Project project_identifier;
 	private String project_sequence;
 	private String status;
 	private String summary;
@@ -36,7 +36,7 @@ public class ProjectTask {
 	private Date updated_at;
 	@ManyToOne
 	@JoinColumn(name="backlog_id")
-	private List<Backlog> backlog_id = new ArrayList<Backlog>();
+	private Backlog backlog_id ;
 	
 	public int getId() {
 		return id;
@@ -94,16 +94,16 @@ public class ProjectTask {
 		this.updated_at = updated_at;
 	}
 	
-	public List<Project> getProject_identifier() {
+	public Project getProject_identifier() {
 		return project_identifier;
 	}
-	public void setProject_identifier(List<Project> project_identifier) {
+	public void setProject_identifier(Project project_identifier) {
 		this.project_identifier = project_identifier;
 	}
-	public List<Backlog> getBacklog_id() {
+	public Backlog getBacklog_id() {
 		return backlog_id;
 	}
-	public void setBacklog_id(List<Backlog> backlog_id) {
+	public void setBacklog_id(Backlog backlog_id) {
 		this.backlog_id = backlog_id;
 	}
 	@Override

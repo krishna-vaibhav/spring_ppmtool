@@ -1,6 +1,8 @@
 package com.yash.ppmtoolweb.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.yash.ppmtoolweb.util.DBUtil;
+
 /**
  * This project is working as data traveller among different layer.
  * @author krishna.vaibhav
@@ -65,17 +67,17 @@ public class Project {
 	Backlog backlog;
 	
 	@OneToMany(mappedBy="project_identifier")
-	private ProjectTask projectTask;
+	private List<ProjectTask> projectTask = new ArrayList<ProjectTask>();
 	
 	public Project() {
 		super();
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -135,12 +137,25 @@ public class Project {
 		this.updated_At = updated_At;
 	}
 
-	@Override
-	public String toString() {
-		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
-				+ ", description=" + description + ", start_date=" + DBUtil.formatDate(start_date) + ", end_date=" + DBUtil.formatDate(end_date)
-				+ ", created_At=" + DBUtil.formatDate(created_At) + ", updated_At=" + DBUtil.formatDate(updated_At) + "]";
+	public Backlog getBacklog() {
+		return backlog;
 	}
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
+	}
+
+	public List<ProjectTask> getProjectTask() {
+		return projectTask;
+	}
+
+	public void setProjectTask(List<ProjectTask> projectTask) {
+		this.projectTask = projectTask;
+	}
+
+	
+
+	
 	
 	
 	
