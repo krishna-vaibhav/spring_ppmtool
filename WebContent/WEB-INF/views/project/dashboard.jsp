@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@ include file="view/includeResources.jsp" %>
+<jsp:include page="/view/includeResources.jsp" >
 <title>Insert title here</title>
 </head>
 
 <body>
 <%@ page errorPage="error.jsp" %> 
-<%@ include file="view/include/header.jsp" %>
+<jsp:include page="/view/includeResources.jsp" >
     <!-- Dashboard Component (Project Item included) -->
 	<jsp:useBean id="id" class="com.yash.ppmtoolweb.serviceimpl.ProjectServiceImpl" scope="session"></jsp:useBean>
 	<c:set var="prjservice" value="${id.listProject()}" ></c:set>

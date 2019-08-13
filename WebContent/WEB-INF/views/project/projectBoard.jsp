@@ -6,10 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<%@ include file="view/includeResources.jsp"%>
+<jsp:include page="/view/includeResources.jsp" >
 </head>
 <body>
-	<%@ include file="view/include/header.jsp"%>
+	<jsp:include page="/view/include/header.jsp">
 	<c:set var="pid" value="${param.project_identifier}" />
 	<jsp:useBean id="projectTask"
 		class="com.yash.ppmtoolweb.serviceimpl.ProjectTaskServiceImpl" />

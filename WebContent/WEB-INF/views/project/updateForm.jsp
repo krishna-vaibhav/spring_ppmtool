@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<%@ include file="view/includeResources.jsp" %>
-
+<jsp:include page="/view/includeResources.jsp" >
 </head>
+
 <body>
- <!-- Start of Project FORM -->
+<!-- Start of Project FORM -->
 
     <div class="project">
         <div class="container">
@@ -17,13 +17,13 @@
                 <div class="col-md-8 m-auto">
                     <h5 class="display-4 text-center">Create Project form</h5>
                     <hr />
-                    <form action="./AddProjectController" method="post">
+                    <form action="./UpdateProjectController?project_identifier=${project.project_identifier}" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg " name="project_name" placeholder="Project Name" />
+                            <input type="text" class="form-control form-control-lg " name="project_name" value="${project.project_name}" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" name="project_identifier" placeholder="Unique Project ID"
-                                />
+                            <input type="text" class="form-control form-control-lg" name="project_identifier" value="${project.project_identifier}"
+                             disabled  />
                         </div>
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->
                         <div class="form-group">

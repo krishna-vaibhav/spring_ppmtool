@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<%@ include file="view/includeResources.jsp" %>
+<jsp:include page="/view/includeResources.jsp" >
 </head>
 <body>
  <!-- CREATE / UPDATE PROJECT TASK FORM STARTS HERE -->
-<%@ include file="view/include/header.jsp" %>
+<jsp:include page="/view/include/header.jsp" >
 
     <div class="add-PBI">
         <div class="container">

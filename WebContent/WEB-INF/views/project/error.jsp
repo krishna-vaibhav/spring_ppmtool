@@ -6,10 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<%@ include file="view/includeResources.jsp"%>
+<jsp:include page="/view/includeResources.jsp" >
 </head>
 <body>
-	<%@ include file="view/include/header.jsp"%>
+	<jsp:include page="/view/includeResources.jsp" >
 	<div class="col-md-12">
 		<h1 class="display-4 text-center">Projects</h1>
 		<br /> <a href="projectForm.jsp" class="btn btn-lg btn-info">
