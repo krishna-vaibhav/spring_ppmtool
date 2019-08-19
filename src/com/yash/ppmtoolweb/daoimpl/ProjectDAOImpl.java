@@ -68,6 +68,13 @@ public class ProjectDAOImpl  implements ProjectDAO{
 		
 	}
 
+	@Override
+	public Project find(String project_identifier) {
+		String jpql = "select p from Project p where p.project_identifier = :pid";
+		return sessionFactory.getCurrentSession().createQuery(jpql, Project.class)
+				.setParameter("pid", project_identifier).getSingleResult();
+	}
+
 	
 
 }

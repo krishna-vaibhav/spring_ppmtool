@@ -3,20 +3,26 @@ package com.yash.ppmtoolweb.serviceimpl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yash.ppmtoolweb.dao.BacklogDao;
 import com.yash.ppmtoolweb.dao.ProjectDAO;
 import com.yash.ppmtoolweb.daoimpl.ProjectDAOImpl;
 import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.BacklogService;
 import com.yash.ppmtoolweb.service.ProjectService;
-
+@Service
 public class ProjectServiceImpl implements ProjectService {
-	ProjectDAO projectDao = null;
-	BacklogService backlogService = null;
+	@Autowired
+	private ProjectDAO projectDao;
+	@Autowired
+	private BacklogService backlogService;
 	
 	public ProjectServiceImpl() {
-		projectDao = new ProjectDAOImpl();
-		backlogService = new BacklogServiceImpl();
+		
+		System.out.println("Inside constr of :: "+getClass().getName());
 		
 	}
 	
@@ -25,23 +31,10 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void createProject(Project project) throws ProjectException {
 		
-		Project projects = projectDao.find(project.getProject_identifier().toUpperCase());
-		
-		if(projects!=null)
-		{
-			throw new ProjectException("Project already exist "+project.getProject_identifier()+" project identifier");
-		}
-		else
-		{
 			project.setCreated_At(new Date());
 			project.setUpdated_At(new Date());
 			projectDao.save(project);
 			backlogService.createBacklog(project);
-			
-			
-		}
-		
-
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package com.yash.ppmtoolweb.serviceimpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.yash.ppmtoolweb.dao.BacklogDao;
 import com.yash.ppmtoolweb.dao.ProjectDAO;
 import com.yash.ppmtoolweb.daoimpl.BacklogDaoImpl;
@@ -7,9 +10,10 @@ import com.yash.ppmtoolweb.daoimpl.ProjectDAOImpl;
 import com.yash.ppmtoolweb.domain.Backlog;
 import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.service.BacklogService;
-
+@Service
 public class BacklogServiceImpl implements BacklogService {
-	BacklogDao backlogDao = new BacklogDaoImpl();
+	@Autowired
+	private BacklogDao backlogDao;
 	@Override
 	public void createBacklog(Project project) {
 		

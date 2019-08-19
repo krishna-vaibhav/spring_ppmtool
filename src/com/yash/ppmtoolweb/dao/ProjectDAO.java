@@ -53,5 +53,5 @@ public interface ProjectDAO {
 	 * @param project_identifier of project to be checked
 	 * @return project with project_identifier if exists
 	 */
-	/*Project find(String project_identifier);*/
+	Project find(String project_identifier);
 }
