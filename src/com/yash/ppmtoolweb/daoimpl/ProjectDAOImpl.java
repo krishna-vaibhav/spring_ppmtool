@@ -8,11 +8,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.yash.ppmtoolweb.dao.ProjectDAO;
 import com.yash.ppmtoolweb.domain.Project;
-@Service 
+@Repository
 public class ProjectDAOImpl  implements ProjectDAO{
 	@Autowired
 	SessionFactory sessionFactory;
@@ -63,13 +63,8 @@ public class ProjectDAOImpl  implements ProjectDAO{
 	@Override
 	public List<Project> findAll() {
 		
-		Session hs = sessionFactory.getCurrentSession();
-		String hql = "from Project";
-		List<Project> project = new ArrayList<>();
-		Transaction tx = hs.beginTransaction();
-		project = hs.createQuery(hql).list();
-		tx.commit();
-		return project;
+		String hql = "select p from Project p";
+		return sessionFactory.getCurrentSession().createQuery(hql).getResultList();
 		
 	}
 

@@ -1,59 +1,40 @@
 package com.yash.ppmtoolweb.daoimpl;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.yash.ppmtoolweb.dao.BacklogDao;
 import com.yash.ppmtoolweb.domain.Backlog;
-import com.yash.ppmtoolweb.util.DBUtil;
 
-public class BacklogDaoImpl extends DBUtil implements BacklogDao {
-
+@Repository
+public class BacklogDaoImpl implements BacklogDao {
+	@Autowired
+	private SessionFactory sessionFactory;	
+	
 	@Override
 	public void save(Backlog backlog) {
 		
-		String sql = "insert into backlogs(tsequence,"
-				+ "project_identifier"
-				+ ",project_id) "
-				+ "values(?,?,?) ";
-		
-		PreparedStatement pstmt = prepareStatement(sql);
-		
-		try {
-			pstmt.setString(1, backlog.gettSequence());
-			pstmt.setString(2, backlog.getProject_identifier());
-			pstmt.setLong(3, backlog.getProject_id());
-			pstmt.execute();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+		Session hs = sessionFactory.getCurrentSession();
+		Transaction tx = hs.beginTransaction();
+		hs.save(backlog);
+		tx.commit();
 		
 	}
 
 	@Override
 	public Backlog find(String project_identifier) {
-		String sql = "select * from backlogs where project_identifier='"+project_identifier+"'";
-		PreparedStatement pstmt = prepareStatement(sql);
-		Backlog backlog = new Backlog();
-		try {
-			ResultSet rs = pstmt.executeQuery();
-			
-			if(rs.next())
-			{
-				backlog.setId(rs.getInt("id"));
-				backlog.setProject_id(rs.getLong("project_id"));
-				backlog.setProject_identifier(rs.getString("project_identifier"));
-				backlog.settSequence(rs.getString("tsequence"));
-			}
-			
-			
 		
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		return backlog;
+		String hql = "select b from Backlog b where b.project_identifier = :pid";
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+	return	(Backlog) session.createQuery(hql, Backlog.class).setParameter("pid", project_identifier);
+		
 	}
 
 	}
