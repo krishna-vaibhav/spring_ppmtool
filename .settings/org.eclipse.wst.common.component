@@ -4,6 +4,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <property name="java-output-path" value="/day10_spring_mvc/build/classes"/>
-        <property name="context-root" value="day11_spring_mvc_hibernate_eve"/>
+        <property name="context-root" value="ppmtool_spring_web"/>
     </wb-module>
 </project-modules>

@@ -1,12 +1,18 @@
 package com.yash.ppmtoolweb.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.ProjectService;
 
 @Controller
+@RequestMapping("/project")
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
@@ -16,9 +22,16 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String showDashboard()
+	public String showDashboard(Model map)
 	{
 		System.out.println("Inside show dashboard method");
+		try {
+			map.addAttribute("prjservice", projectService.listProject());
+			System.out.println("inside try catch showDashboard");
+			
+		} catch (ProjectException e) {
+			e.printStackTrace();
+		}
 		return "/project/dashboard";
 	}
 	

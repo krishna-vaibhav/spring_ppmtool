@@ -15,8 +15,7 @@
 <%@ page errorPage="error.jsp" %> 
 <jsp:include page="/view/includeResources.jsp" >
     <!-- Dashboard Component (Project Item included) -->
-	<jsp:useBean id="id" class="com.yash.ppmtoolweb.serviceimpl.ProjectServiceImpl" scope="session"></jsp:useBean>
-	<c:set var="prjservice" value="${id.listProject()}" ></c:set>
+	
 	<div class="projects">
         <div class="container">
             <div class="row">
@@ -31,7 +30,7 @@
 					
                     <!-- Project Item Component -->
                     <div class="container">
-                    	<c:forEach  var="prj"  items="${prjservice}">
+                    	<c:forEach  var="prj"  items="${requestScope.prjservice}">
                         <div class="card card-body bg-light mb-3">
                             <div class="row">
                                 <div class="col-2">

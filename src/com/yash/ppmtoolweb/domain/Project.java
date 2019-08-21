@@ -153,6 +153,14 @@ public class Project {
 		this.projectTask = projectTask;
 	}
 
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
+				+ ", description=" + description + ", start_date=" + start_date + ", end_date=" + end_date
+				+ ", created_At=" + created_At + ", updated_At=" + updated_At + ", backlog=" + backlog
+				+ ", projectTask=" + projectTask + "]";
+	}
+
 	
 
 	

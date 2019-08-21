@@ -1,7 +1,6 @@
 package com.yash.ppmtoolweb.daoimpl;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -23,8 +22,8 @@ public class ProjectDAOImpl  implements ProjectDAO{
 
 	@Override
 	public void save(Project project) {
-		
-		Session hs = sessionFactory.getCurrentSession();
+		System.out.println(project);
+		Session hs = sessionFactory.openSession();
 		Transaction tx = hs.beginTransaction();
 		hs.save(project);
 		tx.commit();
@@ -64,7 +63,13 @@ public class ProjectDAOImpl  implements ProjectDAO{
 	public List<Project> findAll() {
 		
 		String hql = "select p from Project p";
-		return sessionFactory.getCurrentSession().createQuery(hql).getResultList();
+		
+		Session hs = sessionFactory.getCurrentSession();
+		Transaction tx = hs.beginTransaction();
+		List<Project> list = hs.createQuery(hql,Project.class).getResultList();
+		tx.commit();
+		return list;
+		/*return sessionFactory.getCurrentSession().createQuery(hql).getResultList();*/
 		
 	}
 
