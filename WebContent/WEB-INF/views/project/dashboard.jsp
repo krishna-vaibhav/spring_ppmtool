@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <h1 class="display-4 text-center">Projects</h1>
                     <br />
-                    <a href="<s:url value='/project/projectForm' />" class="btn btn-lg btn-info">
+                    <a href="<s:url value='/project/projectForm'/>" class="btn btn-lg btn-info">
                         Create a Project
                     </a>
                     <br />

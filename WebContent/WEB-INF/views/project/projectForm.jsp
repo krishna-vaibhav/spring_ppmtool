@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <jsp:include page="/view/includeResources.jsp" />
-
 </head>
 <body>
  <!-- Start of Project FORM -->
@@ -20,10 +19,10 @@
                     <hr />
                     <s:form  method="post" modelAttribute="project">
                         <div class="form-group">
-                            <s:input type="text" class="form-control form-control-lg " path="project_name" placeholder="Project Name" />
+                            <s:input  class="form-control form-control-lg " path="project_name" placeholder="Project Name" />
                         </div>
                         <div class="form-group">
-                            <s:input type="text" class="form-control form-control-lg" path="project_identifier" placeholder="Unique Project ID"
+                            <s:input  class="form-control form-control-lg" path="project_identifier" placeholder="Unique Project ID"
                                 />
                         </div>
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->
