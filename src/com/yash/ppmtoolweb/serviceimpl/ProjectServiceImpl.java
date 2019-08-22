@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yash.ppmtoolweb.dao.BacklogDao;
 import com.yash.ppmtoolweb.dao.ProjectDAO;
@@ -14,6 +15,7 @@ import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.BacklogService;
 import com.yash.ppmtoolweb.service.ProjectService;
 @Service
+@Transactional
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDAO projectDao;

@@ -1,15 +1,22 @@
 package com.yash.ppmtoolweb.domain;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.yash.ppmtoolweb.util.DBUtil;
 
 
 /**
@@ -19,8 +26,12 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="projects")
-public class Project {
+public class Project implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * project id used to uniquely identify
      */
 	@Id
@@ -59,13 +70,13 @@ public class Project {
 	 */
 	@Temporal(TemporalType.DATE)
 	private Date updated_At;
-/*	
+	
 	@OneToOne(mappedBy="project_id")
 	Backlog backlog;
 	
 	@OneToMany(mappedBy="project_identifier")
 	private List<ProjectTask> projectTask = new ArrayList<ProjectTask>();
-	*/
+	
 	public Project() {
 		super();
 	}
@@ -133,15 +144,10 @@ public class Project {
 	public void setUpdated_At(Date updated_At) {
 		this.updated_At = updated_At;
 	}
-/*
-	@Override
-	public String toString() {
-		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
-				+ ", description=" + description + ", start_date=" + start_date + ", end_date=" + end_date
-				+ ", created_At=" + created_At + ", updated_At=" + updated_At + "]";
-	}
-*/
-/*	public Backlog getBacklog() {
+
+	
+
+	public Backlog getBacklog() {
 		return backlog;
 	}
 
@@ -156,14 +162,15 @@ public class Project {
 	public void setProjectTask(List<ProjectTask> projectTask) {
 		this.projectTask = projectTask;
 	}
-*/
-	/*@Override
+
+	
+	@Override
 	public String toString() {
 		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
-				+ ", description=" + description + ", start_date=" + start_date + ", end_date=" + end_date
-				+ ", created_At=" + created_At + ", updated_At=" + updated_At + ", backlog=" + backlog
-				+ ", projectTask=" + projectTask + "]";
-	}*/
+				+ ", description=" + description + ", start_date=" + DBUtil.formatDate(start_date) + ", end_date=" + DBUtil.formatDate(end_date)
+				+ ", created_At=" + DBUtil.formatDate(created_At) + ", updated_At=" + DBUtil.formatDate(updated_At) + "]";
+	}
+	
 
 	
 

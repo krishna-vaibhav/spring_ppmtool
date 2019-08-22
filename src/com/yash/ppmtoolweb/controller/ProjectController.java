@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.ProjectService;
 
@@ -36,10 +39,26 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/projectForm")
-	public String showAddProjectForm()
+	public String showAddProjectForm(Project p)
 	{
-		System.out.println("inside show add project form");
+		System.out.println("inside show add project form ");
 		return "/project/projectForm";
+	}
+	
+	@PostMapping("/projectForm")
+	public String processProjectForm(Project p)
+	{
+		System.out.println("in process project form "+p);
+
+		try {
+			projectService.createProject(p);
+			return "redirect:/project/dashboard";
+		} catch (ProjectException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return "redirect:/project/dashboard";
 	}
 	
 }

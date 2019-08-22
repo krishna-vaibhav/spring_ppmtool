@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -17,29 +18,29 @@
                 <div class="col-md-8 m-auto">
                     <h5 class="display-4 text-center">Create Project form</h5>
                     <hr />
-                    <form action="./AddProjectController" method="post">
+                    <s:form  method="post" modelAttribute="project">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg " name="project_name" placeholder="Project Name" />
+                            <s:input type="text" class="form-control form-control-lg " path="project_name" placeholder="Project Name" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" name="project_identifier" placeholder="Unique Project ID"
+                            <s:input type="text" class="form-control form-control-lg" path="project_identifier" placeholder="Unique Project ID"
                                 />
                         </div>
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->
                         <div class="form-group">
-                            <textarea class="form-control form-control-lg" name="description" placeholder="Project Description"></textarea>
+                            <s:textarea class="form-control form-control-lg" path="description" placeholder="Project Description"></s:textarea>
                         </div>
                         <h6>Start Date</h6>
                         <div class="form-group">
-                            <input type="date" class="form-control form-control-lg" name="start_date" />
+                            <s:input type="date" class="form-control form-control-lg" path="start_date" />
                         </div>
                         <h6>Estimated End Date</h6>
                         <div class="form-group">
-                            <input type="date" class="form-control form-control-lg" name="end_date" />
+                            <s:input type="date" class="form-control form-control-lg" path="end_date" />
                         </div>
 
                         <input type="submit" class="btn btn-primary btn-block mt-4" />
-                    </form>
+                    </s:form>
                 </div>
             </div>
         </div>

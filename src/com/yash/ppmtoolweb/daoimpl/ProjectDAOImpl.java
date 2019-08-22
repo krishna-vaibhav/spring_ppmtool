@@ -89,7 +89,7 @@ public class ProjectDAOImpl  implements ProjectDAO{
 		
 		String hql = "select p from Project p";
 		
-		Session hs = sessionFactory.openSession();
+		Session hs = sessionFactory.getCurrentSession();
 		
 		List<Project> list = hs.createQuery(hql,Project.class).getResultList();
 		
