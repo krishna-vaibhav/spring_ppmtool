@@ -1,16 +1,12 @@
 package com.yash.ppmtoolweb.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,6 +47,7 @@ public class Project {
 	/**
 	 * date at which project is completed
 	 */
+	@Temporal(TemporalType.DATE)
 	private Date end_date;
 	/**
 	 * time at which project is created
@@ -62,13 +59,13 @@ public class Project {
 	 */
 	@Temporal(TemporalType.DATE)
 	private Date updated_At;
-	
+/*	
 	@OneToOne(mappedBy="project_id")
 	Backlog backlog;
 	
 	@OneToMany(mappedBy="project_identifier")
 	private List<ProjectTask> projectTask = new ArrayList<ProjectTask>();
-	
+	*/
 	public Project() {
 		super();
 	}
@@ -136,8 +133,15 @@ public class Project {
 	public void setUpdated_At(Date updated_At) {
 		this.updated_At = updated_At;
 	}
-
-	public Backlog getBacklog() {
+/*
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
+				+ ", description=" + description + ", start_date=" + start_date + ", end_date=" + end_date
+				+ ", created_At=" + created_At + ", updated_At=" + updated_At + "]";
+	}
+*/
+/*	public Backlog getBacklog() {
 		return backlog;
 	}
 
@@ -152,14 +156,14 @@ public class Project {
 	public void setProjectTask(List<ProjectTask> projectTask) {
 		this.projectTask = projectTask;
 	}
-
-	@Override
+*/
+	/*@Override
 	public String toString() {
 		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
 				+ ", description=" + description + ", start_date=" + start_date + ", end_date=" + end_date
 				+ ", created_At=" + created_At + ", updated_At=" + updated_At + ", backlog=" + backlog
 				+ ", projectTask=" + projectTask + "]";
-	}
+	}*/
 
 	
 

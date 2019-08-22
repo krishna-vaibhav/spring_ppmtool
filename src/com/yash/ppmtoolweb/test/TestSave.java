@@ -14,8 +14,8 @@ public class TestSave {
 		
 		Project project = new Project();
 		
-		project.setProject_name("test4");
-		project.setProject_identifier("test01");
+		project.setProject_name("TEST1");
+		project.setProject_identifier("TE01");
 		project.setDescription("test4 description");
 		project.setStart_date(new Date());
 		project.setEnd_date(new Date());

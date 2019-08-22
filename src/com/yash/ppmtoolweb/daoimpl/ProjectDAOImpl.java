@@ -3,30 +3,55 @@ package com.yash.ppmtoolweb.daoimpl;
 
 import java.util.List;
 
+
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yash.ppmtoolweb.dao.ProjectDAO;
 import com.yash.ppmtoolweb.domain.Project;
+
 @Repository
 public class ProjectDAOImpl  implements ProjectDAO{
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
+	
 	
 	public ProjectDAOImpl() {
 		System.out.println("in constr of "+getClass().getName());
+		
 	}
 
 	@Override
 	public void save(Project project) {
-		System.out.println(project);
-		Session hs = sessionFactory.openSession();
-		Transaction tx = hs.beginTransaction();
-		hs.save(project);
-		tx.commit();
+		/*System.out.println(project);*/
+		sessionFactory.getCurrentSession().save(project);
+		
+		/*Session session = sessionFactory.getCurrentSession();
+		Transaction tx = null;
+		
+		try {
+			
+			tx = session.beginTransaction();
+			session.saveOrUpdate(project);
+			tx.commit();
+			
+		} 
+		catch (HibernateException e) {
+			
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+			
+		}
+		finally {
+			
+			session.close();
+		}*/
 		
 	}
 
@@ -64,10 +89,10 @@ public class ProjectDAOImpl  implements ProjectDAO{
 		
 		String hql = "select p from Project p";
 		
-		Session hs = sessionFactory.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
+		Session hs = sessionFactory.openSession();
+		
 		List<Project> list = hs.createQuery(hql,Project.class).getResultList();
-		tx.commit();
+		
 		return list;
 		/*return sessionFactory.getCurrentSession().createQuery(hql).getResultList();*/
 		
