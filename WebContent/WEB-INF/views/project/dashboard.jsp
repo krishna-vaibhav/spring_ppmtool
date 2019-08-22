@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -21,7 +22,7 @@
                 <div class="col-md-12">
                     <h1 class="display-4 text-center">Projects</h1>
                     <br />
-                    <a href="projectForm" class="btn btn-lg btn-info">
+                    <a href="<s:url value='/project/projectForm' />" class="btn btn-lg btn-info">
                         Create a Project
                     </a>
                     <br />

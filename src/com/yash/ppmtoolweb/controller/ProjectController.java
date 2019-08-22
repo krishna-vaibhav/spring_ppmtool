@@ -52,7 +52,7 @@ public class ProjectController {
 
 		try {
 			projectService.createProject(p);
-			return "redirect:/project/dashboard";
+			
 		} catch (ProjectException e) {
 			
 			e.printStackTrace();
