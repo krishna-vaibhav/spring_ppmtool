@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <h1 class="display-4 text-center">Projects</h1>
                     <br />
-                    <a href="projectForm.jsp" class="btn btn-lg btn-info">
+                    <a href="projectForm" class="btn btn-lg btn-info">
                         Create a Project
                     </a>
                     <br />

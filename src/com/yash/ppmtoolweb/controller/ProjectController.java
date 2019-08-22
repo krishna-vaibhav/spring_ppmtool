@@ -35,4 +35,11 @@ public class ProjectController {
 		return "/project/dashboard";
 	}
 	
+	@GetMapping("/projectForm")
+	public String showAddProjectForm()
+	{
+		System.out.println("inside show add project form");
+		return "/project/projectForm";
+	}
+	
 }
