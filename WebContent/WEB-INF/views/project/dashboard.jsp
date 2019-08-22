@@ -7,15 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<jsp:include page="/view/includeResources.jsp" >
+<jsp:include page="/view/includeResources.jsp" />
 <title>Insert title here</title>
 </head>
 
 <body>
 <%@ page errorPage="error.jsp" %> 
-<jsp:include page="/view/includeResources.jsp" >
+<jsp:include page="/view/include/header.jsp" />
     <!-- Dashboard Component (Project Item included) -->
-	
 	<div class="projects">
         <div class="container">
             <div class="row">
