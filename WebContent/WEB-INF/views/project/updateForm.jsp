@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,29 +18,29 @@
                 <div class="col-md-8 m-auto">
                     <h5 class="display-4 text-center">Create Project form</h5>
                     <hr />
-                    <form action="./UpdateProjectController?project_identifier=${project.project_identifier}" method="post">
+                    <s:form  method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg " name="project_name" value="${project.project_name}" />
+                            <s:input  class="form-control form-control-lg " path="project_name" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" name="project_identifier" value="${project.project_identifier}"
+                            <s:input  class="form-control form-control-lg" path="project_identifier"
                              disabled  />
                         </div>
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->
                         <div class="form-group">
-                            <textarea class="form-control form-control-lg" name="description" placeholder="Project Description"></textarea>
+                            <s:textarea class="form-control form-control-lg" path="description" placeholder="Project Description"></s:textarea>
                         </div>
                         <h6>Start Date</h6>
                         <div class="form-group">
-                            <input type="date" class="form-control form-control-lg" name="start_date" />
+                            <s:input type="date" class="form-control form-control-lg" path="start_date" />
                         </div>
                         <h6>Estimated End Date</h6>
                         <div class="form-group">
-                            <input type="date" class="form-control form-control-lg" name="end_date" />
+                            <s:input type="date" class="form-control form-control-lg" path="end_date" />
                         </div>
 
                         <input type="submit" class="btn btn-primary btn-block mt-4" />
-                    </form>
+                    </s:form>
                 </div>
             </div>
         </div>

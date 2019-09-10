@@ -87,6 +87,14 @@ public class ProjectServiceImpl implements ProjectService {
 		
 	}
 
+
+
+	@Override
+	public Project getProject(int id) {
+		
+		return projectDao.find(id);
+	}
+
 	
 
 }

@@ -30,6 +30,6 @@ public interface ProjectService {
 	 */
 	void updateProject(Project project)throws ProjectException;
 	
-	
+	Project getProject(int id);
 	
 }

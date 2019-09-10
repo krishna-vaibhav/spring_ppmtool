@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.ProjectService;
@@ -58,9 +60,10 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/updateForm")
-	public String showUpdateForm(Project project)
+	public String showUpdateForm(Project project,Model map)
 	{
-		System.out.println("inside show update form "+project);
+		System.out.println("inside show update form....");
+		map.addAttribute("project",projectService.getProject(project.getId()));
 		return "/project/updateForm";
 	}
 	

@@ -48,7 +48,7 @@
                                                 <i class="fa fa-flag-checkered pr-1">Project Board </i>
                                             </li>
                                         </a>
-                                        <a href="GetInfoOfProjectController?project_identifier=${prj.project_identifier}">
+                                        <a href="GetInfoOfProjectController?id=${prj.id}">
                                             <li class="list-group-item update">
                                                 <i class="fa fa-edit pr-1">Update Project Info</i>
                                             </li>
