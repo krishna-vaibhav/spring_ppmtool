@@ -1,15 +1,11 @@
 package com.yash.ppmtoolweb.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
 import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.ProjectService;
@@ -59,6 +55,13 @@ public class ProjectController {
 		}
 		
 		return "redirect:/project/dashboard";
+	}
+	
+	@GetMapping("/updateForm")
+	public String showUpdateForm(Project project)
+	{
+		System.out.println("inside show update form "+project);
+		return "/project/updateForm";
 	}
 	
 }

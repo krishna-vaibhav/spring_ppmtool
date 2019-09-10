@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yash.ppmtoolweb.dao.BacklogDao;
 import com.yash.ppmtoolweb.dao.ProjectDAO;
-import com.yash.ppmtoolweb.daoimpl.ProjectDAOImpl;
 import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.BacklogService;
@@ -73,7 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void updateProject(Project project) throws ProjectException {
 		
-		Project projects = projectDao.find(project.getProject_identifier());
+		Project projects = projectDao.find(project.getId());
 		if(projects == null)
 		{
 			throw new ProjectException("Project cannot be updated");

@@ -17,17 +17,17 @@
                 <div class="col-md-8 m-auto">
                     <h5 class="display-4 text-center">Create Project form</h5>
                     <hr />
-                    <s:form  method="post" modelAttribute="project">
+                    <s:form  method="post" action="projectForm" modelAttribute="project">
                         <div class="form-group">
-                            <s:input  class="form-control form-control-lg " path="project_name" placeholder="Project Name" />
+                            <s:input  class="form-control form-control-lg " path="project_name"  />
                         </div>
                         <div class="form-group">
-                            <s:input  class="form-control form-control-lg" path="project_identifier" placeholder="Unique Project ID"
+                            <s:input  class="form-control form-control-lg" path="project_identifier" 
                                 />
                         </div>
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->
                         <div class="form-group">
-                            <s:textarea class="form-control form-control-lg" path="description" placeholder="Project Description"></s:textarea>
+                            <s:textarea class="form-control form-control-lg" path="description" ></s:textarea>
                         </div>
                         <h6>Start Date</h6>
                         <div class="form-group">

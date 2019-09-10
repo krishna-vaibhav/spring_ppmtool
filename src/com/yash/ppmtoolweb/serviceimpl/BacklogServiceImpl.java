@@ -21,10 +21,9 @@ public class BacklogServiceImpl implements BacklogService {
 		ProjectDAO projectDAO = new ProjectDAOImpl();
 		Backlog backlog = new Backlog();
 		
-		project.setId(projectDAO.find(project.getProject_identifier()).getId());
-	    backlog.setProject_id(project.getId());
+		
 	    backlog.setProject_identifier(project.getProject_identifier());
-	    backlog.settSequence(project.getProject_identifier()+"b0");
+	    backlog.settSequence(project.getProject_identifier()+"B0");
 	    
 		
 		

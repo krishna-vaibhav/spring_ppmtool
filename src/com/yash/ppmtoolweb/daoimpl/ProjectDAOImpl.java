@@ -2,16 +2,11 @@ package com.yash.ppmtoolweb.daoimpl;
 
 
 import java.util.List;
-
-
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.yash.ppmtoolweb.dao.ProjectDAO;
 import com.yash.ppmtoolweb.domain.Project;
 
@@ -57,11 +52,11 @@ public class ProjectDAOImpl  implements ProjectDAO{
 
 	@Override
 	public void update(Project project) {
-		
-		Session hs = sessionFactory.getCurrentSession();
+		sessionFactory.getCurrentSession().saveOrUpdate(project);
+		/*Session hs = sessionFactory.getCurrentSession();
 		Transaction tx = hs.beginTransaction();
 		hs.saveOrUpdate(project);
-		tx.commit();
+		tx.commit();*/
 	}
 
 	@Override
@@ -74,7 +69,7 @@ public class ProjectDAOImpl  implements ProjectDAO{
 	}
 
 	@Override
-	public Project find(Long id) {
+	public Project find(int id) {
 		
 		Session hs = sessionFactory.getCurrentSession();
 		Transaction tx = hs.beginTransaction();
@@ -98,12 +93,12 @@ public class ProjectDAOImpl  implements ProjectDAO{
 		
 	}
 
-	@Override
+	/*@Override
 	public Project find(String project_identifier) {
 		String jpql = "select p from Project p where p.project_identifier = :pid";
 		return sessionFactory.getCurrentSession().createQuery(jpql, Project.class)
 				.setParameter("pid", project_identifier).getSingleResult();
-	}
+	}*/
 
 	
 

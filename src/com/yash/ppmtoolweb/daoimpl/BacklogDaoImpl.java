@@ -19,12 +19,9 @@ public class BacklogDaoImpl implements BacklogDao {
 	
 	@Override
 	public void save(Backlog backlog) {
-		
-		Session hs = sessionFactory.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
-		hs.save(backlog);
-		tx.commit();
-		
+
+		sessionFactory.getCurrentSession().save(backlog);
+	
 	}
 
 	@Override

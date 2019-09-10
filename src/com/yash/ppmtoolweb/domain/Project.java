@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.yash.ppmtoolweb.util.DBUtil;
 
@@ -36,7 +37,7 @@ public class Project implements Serializable{
      */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	/**
 	 * name of project to be created
 	 */
@@ -53,22 +54,22 @@ public class Project implements Serializable{
 	/**
 	 * date at which project is created
 	 */
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date start_date;
 	/**
 	 * date at which project is completed
 	 */
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date end_date;
 	/**
 	 * time at which project is created
 	 */
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date created_At;
 	/**
 	 * time at which project is updated
 	 */
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date updated_At;
 	
 	@OneToOne(mappedBy="project_id")
@@ -81,11 +82,11 @@ public class Project implements Serializable{
 		super();
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -163,15 +164,21 @@ public class Project implements Serializable{
 		this.projectTask = projectTask;
 	}
 
-	
 	@Override
+	public String toString() {
+		return "Project [project_name=" + project_name + ", project_identifier=" + project_identifier + ", description="
+				+ description + "]";
+	}
+
+	
+	/*@Override
 	public String toString() {
 		return "Project [id=" + id + ", project_name=" + project_name + ", project_identifier=" + project_identifier
 				+ ", description=" + description + ", start_date=" + DBUtil.formatDate(start_date) + ", end_date=" + DBUtil.formatDate(end_date)
 				+ ", created_At=" + DBUtil.formatDate(created_At) + ", updated_At=" + DBUtil.formatDate(updated_At) + "]";
-	}
+	}*/
 	
-
+	
 	
 
 	
