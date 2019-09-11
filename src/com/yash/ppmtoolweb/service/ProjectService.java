@@ -23,7 +23,7 @@ public interface ProjectService {
 	 * @param id of project to be deleted
 	 * @throws ProjectException will be thrown if project does not exists.
 	 */
-	void deleteProject(String project_identifier) throws ProjectException;
+	void deleteProject(int id) throws ProjectException;
 	/**
 	 * This will update the existing project details.
 	 * @param project to be updated

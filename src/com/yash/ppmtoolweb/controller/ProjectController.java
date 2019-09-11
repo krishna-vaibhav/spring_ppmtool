@@ -15,6 +15,8 @@ import com.yash.ppmtoolweb.service.ProjectService;
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
+	
+	
 	@Autowired
 	private ProjectService projectService;
 	
@@ -65,6 +67,41 @@ public class ProjectController {
 		System.out.println("inside show update form....");
 		map.addAttribute("project",projectService.getProject(project.getId()));
 		return "/project/updateForm";
+	}
+	
+	@PostMapping("/updateForm")
+	public String processUpdateForm(Project project)
+	{
+		System.out.println("inside process update form "+project);
+		try {
+			projectService.updateProject(project);
+		} catch (ProjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/project/dashboard";
+	}
+	
+	
+	@GetMapping("/deleteProject")
+	public String deleteProject(@RequestParam int id)
+	{
+		System.out.println("inside delete project in projectcontroller...."+id);
+		
+		try {
+			projectService.deleteProject(id);
+		} catch (ProjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/project/dashboard";
+	}
+	
+	@GetMapping("/projectBoard")
+	public String showProjectBoard()
+	{
+		System.out.println("inside show project board ......");
+		return "/project/projectBoard";
 	}
 	
 }

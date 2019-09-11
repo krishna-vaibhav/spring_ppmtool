@@ -52,18 +52,18 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void deleteProject(String project_identifier) throws ProjectException {
+	public void deleteProject(int id) throws ProjectException {
 		
-		Project project = projectDao.find(project_identifier.toUpperCase());
+		Project project = projectDao.find(id);
 		System.out.println(project);
 		if(project == null)
 		{
-			throw new ProjectException("There is no project with "+project_identifier+" project identifier");
+			throw new ProjectException("There is no project with "+id+" project identifier");
 			
 		}
 		else
 		{
-			projectDao.delete(project.getId());
+			projectDao.delete(project);
 		}
 
 	}

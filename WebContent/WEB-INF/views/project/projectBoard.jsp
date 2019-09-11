@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<jsp:include page="/view/includeResources.jsp" >
+<jsp:include page="/view/includeResources.jsp" />
 </head>
 <body>
 	<jsp:include page="/view/include/header.jsp">

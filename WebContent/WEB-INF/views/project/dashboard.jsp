@@ -43,17 +43,17 @@
                                 </div>
                                 <div class="col-md-4 d-none d-lg-block">
                                     <ul class="list-group">
-                                        <a href="projectBoard.jsp?project_identifier=${prj.project_identifier}">
+                                        <a href="<s:url value='/project/projectBoard?id=${prj.id}'/>">
                                             <li class="list-group-item board">
                                                 <i class="fa fa-flag-checkered pr-1">Project Board </i>
                                             </li>
                                         </a>
-                                        <a href="GetInfoOfProjectController?id=${prj.id}">
+                                        <a href="<s:url value='/project/updateForm?id=${prj.id}'/>">
                                             <li class="list-group-item update">
                                                 <i class="fa fa-edit pr-1">Update Project Info</i>
                                             </li>
                                         </a>
-                                        <a href="DeleteProjectController?project_identifier=${prj.project_identifier}">
+                                        <a href="<s:url value='/project/deleteProject?id=${prj.id}'/>">
                                             <li class="list-group-item delete">
                                                 <i class="fa fa-minus-circle pr-1">Delete Project</i>
                                             </li>

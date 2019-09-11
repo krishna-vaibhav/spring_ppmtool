@@ -31,7 +31,7 @@ public interface ProjectDAO {
 	 *            of project to be deleted
 	 * @return a project is successfully deleted or not
 	 */
-	void delete(Long id);
+	void delete(Project project);
 
 	/**
 	 * this will return project if found otherwise null

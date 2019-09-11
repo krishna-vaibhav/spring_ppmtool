@@ -2,11 +2,12 @@ package com.yash.ppmtoolweb.daoimpl;
 
 
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.yash.ppmtoolweb.dao.ProjectDAO;
 import com.yash.ppmtoolweb.domain.Project;
 
@@ -52,7 +53,8 @@ public class ProjectDAOImpl  implements ProjectDAO{
 
 	@Override
 	public void update(Project project) {
-		sessionFactory.getCurrentSession().saveOrUpdate(project);
+		System.out.println("inside update dao method "+project);
+		sessionFactory.getCurrentSession().merge(project);
 		/*Session hs = sessionFactory.getCurrentSession();
 		Transaction tx = hs.beginTransaction();
 		hs.saveOrUpdate(project);
@@ -60,22 +62,21 @@ public class ProjectDAOImpl  implements ProjectDAO{
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Project project) {
 		
-		Session hs = sessionFactory.getCurrentSession();
+		
+		sessionFactory.getCurrentSession().delete(project);;
+		/*Session hs = sessionFactory.getCurrentSession();
 		Transaction tx = hs.beginTransaction();
 		hs.delete("id", Project.class);
-		tx.commit();
+		tx.commit();*/
 	}
 
 	@Override
 	public Project find(int id) {
 		
-		Session hs = sessionFactory.getCurrentSession();
-		Transaction tx = hs.beginTransaction();
-		Project project = (Project) hs.get("id",Project.class);
-		tx.commit();
-		return project;
+		
+		return sessionFactory.getCurrentSession().get(Project.class,id);
 		
 	}
 

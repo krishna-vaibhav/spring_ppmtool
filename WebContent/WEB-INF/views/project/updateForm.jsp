@@ -6,25 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<jsp:include page="/view/includeResources.jsp" >
+<jsp:include page="/view/includeResources.jsp" />
 </head>
 
 <body>
 <!-- Start of Project FORM -->
-
+	<jsp:include page="/view/include/header.jsp" />
     <div class="project">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 m-auto">
                     <h5 class="display-4 text-center">Create Project form</h5>
                     <hr />
-                    <s:form  method="post">
+                    <s:form  method="post" modelAttribute="project">
                         <div class="form-group">
                             <s:input  class="form-control form-control-lg " path="project_name" />
                         </div>
                         <div class="form-group">
                             <s:input  class="form-control form-control-lg" path="project_identifier"
-                             disabled  />
+                             readonly="project_identifier"  />
                         </div>
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->
                         <div class="form-group">
