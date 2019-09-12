@@ -27,7 +27,7 @@ public class ProjectTaskDaoImpl  implements ProjectTaskDao {
 	@Override
 	public List<ProjectTask> listProjectTask(String project_identifier) {
 	
-		String jpql = "select pt from ProjectTask pt where project_identifier = :pid";
+		String jpql = "select pt from ProjectTask pt where pt.project_identifier = :pid";
 		return sf.getCurrentSession().createQuery(jpql, ProjectTask.class).setParameter("pid", project_identifier)
 				.getResultList();
 

@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-4 d-none d-lg-block">
                                     <ul class="list-group">
-                                        <a href="<s:url value='/project/projectBoard?id=${prj.id}'/>">
+                                        <a href="<s:url value='/project/projectBoard?project_identifier=${prj.project_identifier}'/>">
                                             <li class="list-group-item board">
                                                 <i class="fa fa-flag-checkered pr-1">Project Board </i>
                                             </li>
