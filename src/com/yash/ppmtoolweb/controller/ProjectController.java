@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yash.ppmtoolweb.domain.Project;
+import com.yash.ppmtoolweb.domain.ProjectTask;
 import com.yash.ppmtoolweb.exception.ProjectException;
 import com.yash.ppmtoolweb.service.ProjectService;
 
@@ -19,6 +20,9 @@ public class ProjectController {
 	
 	@Autowired
 	private ProjectService projectService;
+	
+	/*@Autowired
+	private ProjectTask projectTask;*/
 	
 	public ProjectController() {
 		System.out.println("in constr of "+getClass().getName());
@@ -97,11 +101,6 @@ public class ProjectController {
 		return "redirect:/project/dashboard";
 	}
 	
-	@GetMapping("/projectBoard")
-	public String showProjectBoard()
-	{
-		System.out.println("inside show project board ......");
-		return "/project/projectBoard";
-	}
+	
 	
 }

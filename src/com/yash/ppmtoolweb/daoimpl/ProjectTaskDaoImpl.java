@@ -12,7 +12,7 @@ import com.yash.ppmtoolweb.dao.ProjectTaskDao;
 import com.yash.ppmtoolweb.domain.ProjectTask;
 import com.yash.ppmtoolweb.util.DBUtil;
 @Repository
-public class ProjectTaskDaoImpl extends DBUtil implements ProjectTaskDao {
+public class ProjectTaskDaoImpl  implements ProjectTaskDao {
 
 	@Autowired
 	private SessionFactory sf;
@@ -20,10 +20,7 @@ public class ProjectTaskDaoImpl extends DBUtil implements ProjectTaskDao {
 	@Override
 	public void save(ProjectTask projectTask) {
 		
-	Session hs = sf.getCurrentSession();
-	Transaction tx = hs.beginTransaction();
-	hs.save(projectTask);
-	tx.commit();
+	sf.getCurrentSession().merge(projectTask);
 
 	}
 

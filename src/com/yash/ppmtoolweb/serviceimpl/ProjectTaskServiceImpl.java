@@ -3,6 +3,10 @@ package com.yash.ppmtoolweb.serviceimpl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.yash.ppmtoolweb.dao.ProjectTaskDao;
 import com.yash.ppmtoolweb.daoimpl.ProjectTaskDaoImpl;
 import com.yash.ppmtoolweb.domain.Backlog;
@@ -10,12 +14,14 @@ import com.yash.ppmtoolweb.domain.ProjectTask;
 import com.yash.ppmtoolweb.service.BacklogService;
 import com.yash.ppmtoolweb.service.ProjectTaskService;
 
+@Service
 public class ProjectTaskServiceImpl implements ProjectTaskService {
 	
-	ProjectTaskDao projectTaskDao = null;
+	
+	
 	
 	public ProjectTaskServiceImpl() {
-		projectTaskDao = new ProjectTaskDaoImpl();
+		System.out.println("in constr of "+getClass().getName());
 	}
 	
 	@Override
@@ -24,11 +30,10 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
 		
 		projectTask.setCreated_at(new Date());
 		projectTask.setUpdated_at(new Date());
-		BacklogService backlogService = new BacklogServiceImpl();
+		
+		Backlog backlog = backlogService.findBacklog(projectTask.getProject_identifier().getProject_identifier());
 
-		Backlog backlog = backlogService.findBacklog(projectTask.getProject_identifier());
-
-		projectTask.setBacklog_id(backlog.getId());
+		projectTask.setBacklog_id(backlog);
 		projectTask.setProject_identifier(backlog.getProject_identifier());
 		projectTask.setProject_sequence(backlog.gettSequence().toUpperCase());
 		

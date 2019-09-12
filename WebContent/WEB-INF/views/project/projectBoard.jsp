@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
 <!DOCTYPE html>
@@ -12,10 +12,11 @@
 <body>
 	<jsp:include page="/view/include/header.jsp">
 	<c:set var="pid" value="${param.project_identifier}" />
-	<jsp:useBean id="projectTask"
+	
+	<%-- <jsp:useBean id="projectTask"
 		class="com.yash.ppmtoolweb.serviceimpl.ProjectTaskServiceImpl" />
 	<c:set var="listTaskInProgress" scope="request"
-		value="${projectTask.listAllProjectTask(pid) }" />
+		value="${projectTask.listAllProjectTask(pid) }" /> --%>
 
 	<!-- Project Board Starts Here MIND OTHER COMPONENTS WHEN COPY AND PASTING -->
 	<div class="container">

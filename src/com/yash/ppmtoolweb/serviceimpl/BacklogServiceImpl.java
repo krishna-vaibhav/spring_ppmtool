@@ -12,18 +12,19 @@ import com.yash.ppmtoolweb.domain.Project;
 import com.yash.ppmtoolweb.service.BacklogService;
 @Service
 public class BacklogServiceImpl implements BacklogService {
+	
 	@Autowired
 	private BacklogDao backlogDao;
+	
 	@Override
 	public void createBacklog(Project project) {
 		
 		
 		ProjectDAO projectDAO = new ProjectDAOImpl();
 		Backlog backlog = new Backlog();
-		
-		
 	    backlog.setProject_identifier(project.getProject_identifier());
 	    backlog.settSequence(project.getProject_identifier()+"B0");
+	    backlog.setProject_id(project);
 	    
 		
 		

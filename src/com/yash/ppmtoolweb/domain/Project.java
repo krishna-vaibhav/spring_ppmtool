@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -72,7 +74,7 @@ public class Project implements Serializable{
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date updated_At;
 	
-	@OneToOne(mappedBy="project_id")
+	@OneToOne(mappedBy="project_id", cascade=CascadeType.ALL)
 	Backlog backlog;
 	
 	@OneToMany(mappedBy="project_identifier")
